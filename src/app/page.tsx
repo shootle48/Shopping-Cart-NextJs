@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack, Typography, Container } from "@mui/material";
+import { Stack, Typography, Container, Grid } from "@mui/material";
 import React from "react";
 import ItemCart from "./item-cart";
 
@@ -29,9 +29,9 @@ export default function Home() {
     { itemname: "iPad mini", price: 17900, image: "https://www.apple.com/v/ipad/home/ck/images/overview/select/product-tile/pt_ipad_mini__f3iy3qb50gia_xlarge.png" },
     { itemname: "MacBook Air", price: 37900, image: "https://www.apple.com/v/macbook-air/s/images/overview/routers/compare_mba_13_15__caznvrb61zyu_large.png" },
     { itemname: "MacBook Pro", price: 73900, image: "https://www.apple.com/v/macbook-air/s/images/overview/routers/compare_mbp_14_16__f7ovwhzitq6i_large.png" },
-    { itemname: "iMac", price: 49900, image: "https://www.apple.com/v/imac/p/images/overview/routers/compare_imac__f7hnie54ekii_large.png" },
-    { itemname: "Mac mini", price: 20900, image: "https://www.apple.com/v/imac/p/images/overview/routers/compare_macmini__b7wpdul5zff6_large.png" },
-    { itemname: "Mac Studio", price: 69900, image: "https://www.apple.com/v/imac/p/images/overview/routers/compare_macstudio__detym2irhvma_large.png" },
+    { itemname: "iMac", price: 49900, image: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/imac-24-no-id-blue-selection-hero-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1701459101618" },
+    { itemname: "Mac mini", price: 20900, image: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mac-mini-pro-hero-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1670038313664" },
+    { itemname: "Mac Studio", price: 69900, image: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mac-studio-select-202306?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1684345161143" },
   ];
 
   return (
@@ -39,18 +39,20 @@ export default function Home() {
       <Typography variant="h3" gutterBottom>
         Shopping Cart
       </Typography>
-      {myItems.map((item) => (
-        <ItemCart
-          key={item.itemname}
-          itemname={item.itemname}
-          itemPrice={item.price}
-          image={item.image}
-          handleIncrement={handleIncrement}
-          handleDecrement={handleDecrement}
-        />
-      ))}
+      <Grid container spacing={4}>
+        {myItems.map((item) => (
+          <ItemCart
+            key={item.itemname}
+            itemname={item.itemname}
+            itemPrice={item.price}
+            image={item.image}
+            handleIncrement={handleIncrement}
+            handleDecrement={handleDecrement}
+          />
+        ))}
+      </Grid>
       <Stack direction="row" spacing={2} justifyContent="space-between" mt={2}>
-        <Typography variant="h5">Total:</Typography>
+        <Typography variant="h5">ราคาทั้งหมด:</Typography>
         <Typography variant="h5">
           {grandTotal.toLocaleString()} บาท
         </Typography>
